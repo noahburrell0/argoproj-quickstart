@@ -2,8 +2,8 @@
 
 This assumes that you already have an Argo CD instance running, and a cluster you wish to deploy the argoproj components to added to it.
 
-1. Clone repository
-1. Fix and replace all instances of `noahburrell0` with your username/organization
+1. Fork repository
+1. Find and replace all instances of `noahburrell0` with your username/organization
 1. Create a new app in Argo CD
     1. Click the "+ NEW APP" button
     1. Click the "EDIT AS YAML"
