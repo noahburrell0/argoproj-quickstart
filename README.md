@@ -1,6 +1,6 @@
 ## Getting Started
 
-This assumes that you already have an Argo CD instance running, and a cluster you wish to deploy the argoproj components to added to it.
+This assumes that you already have an Argo CD instance running, and a cluster added that you wish to deploy the argoproj components into.
 
 1. Fork repository
 1. Find and replace all instances of `noahburrell0` with your username/organization
