@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argoproj-quickstart-whalesay-workflow
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - clusters:
+      selector:
+        matchExpressions:
+         - key: argoproj-components
+           operator: In
+           values:
+             - "true"
+  template:
+    metadata:
+      name: 'argoproj-quickstart-whalesay-workflow-{{.name}}'
+    spec:
+      destination:
+        namespace: 'whalesay-workflow'
+        name: '{{.name}}'
+      project: argoproj-quickstart
+      source:
+        repoURL: 'https://github.com/noahburrell0/argoproj-quickstart
+.git'
+        path: 'configs/whalesay-workflow'
+        targetRevision: 'main'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true

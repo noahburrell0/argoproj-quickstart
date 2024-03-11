@@ -1,0 +1,32 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argoproj-quickstart-workflows
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - clusters:
+      selector:
+        matchExpressions:
+         - key: argoproj-components
+           operator: In
+           values:
+             - "true"
+  template:
+    metadata:
+      name: 'argoproj-quickstart-workflows-{{.name}}'
+    spec:
+      destination:
+        namespace: 'argo'
+        name: '{{.name}}'
+      project: argoproj-quickstart
+      source:
+        repoURL: 'https://github.com/noahburrell0/argoproj-quickstart
+.git'
+        path: 'configs/workflows'
+        targetRevision: 'main'
+      syncPolicy:
+        automated: {}
+        syncOptions:
+          - CreateNamespace=true

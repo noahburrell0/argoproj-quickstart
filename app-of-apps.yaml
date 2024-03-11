@@ -1,0 +1,20 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: app-of-apps-argoproj
+spec:
+  project: default
+  syncPolicy:
+    automated:
+      prune: true
+      allowEmpty: true
+  source:
+    repoURL: https://github.com/noahburrell0/argoproj-quickstart
+.git
+    targetRevision: main
+    path: argocd
+    directory:
+      recurse: true
+  destination:
+    name: in-cluster
+    namespace: argocd

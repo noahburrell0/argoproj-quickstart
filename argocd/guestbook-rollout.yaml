@@ -1,0 +1,31 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: argoproj-quickstart-guestbook-rollout
+spec:
+  goTemplate: true
+  goTemplateOptions: ["missingkey=error"]
+  generators:
+  - clusters:
+      selector:
+        matchExpressions:
+         - key: argoproj-components
+           operator: In
+           values:
+             - "true"
+  template:
+    metadata:
+      name: 'argoproj-quickstart-guestbook-rollout-{{.name}}'
+    spec:
+      destination:
+        namespace: 'guestbook-rollout'
+        name: '{{.name}}'
+      project: argoproj-quickstart
+      source:
+        repoURL: 'https://github.com/noahburrell0/argoproj-quickstart
+.git'
+        path: 'configs/guestbook-rollout'
+        targetRevision: 'main'
+      syncPolicy:
+        syncOptions:
+          - CreateNamespace=true
