@@ -8,3 +8,10 @@ helmCharts:
   namespace: argo
   version: 3.4.5-ak.2.1
   # valuesFile: values.yaml
+
+patches:
+- op: replace
+  path: "/spec/template/spec/containers/0/args"
+  value:
+  - server
+  - --auth-mode=server
