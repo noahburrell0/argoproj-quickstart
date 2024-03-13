@@ -9,7 +9,7 @@ spec:
       prune: true
       allowEmpty: true
   source:
-    repoURL: https://github.com/noahburrell0/argoproj-quickstart.git
+    repoURL: https://github.com/dhpup/argoproj-quickstart.git
     targetRevision: main
     path: argocd
     directory:
