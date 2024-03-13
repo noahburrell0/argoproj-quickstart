@@ -10,8 +10,13 @@ helmCharts:
   # valuesFile: values.yaml
 
 patches:
-- op: replace
-  path: "/spec/template/spec/containers/0/args"
-  value:
-  - server
-  - --auth-mode=server
+- target:
+    version: v1
+    kind: Deployment
+    name: argo-server
+  patch: |-
+    - op: replace
+      path: "/spec/template/spec/containers/0/args"
+      value:
+      - server
+      - --auth-mode=server
