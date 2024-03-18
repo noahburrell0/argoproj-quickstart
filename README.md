@@ -3,7 +3,7 @@
 This assumes that you already have an Argo CD instance running, and a cluster added that you wish to deploy the argoproj components into.
 
 1. Fork repository
-1. Find and replace all instances of `dhpup` with your username/organization
+1. Find and replace all instances of `noahburrell0` with your username/organization
 1. Create a new app in Argo CD
     1. Click the "+ NEW APP" button
     1. Click the "EDIT AS YAML"
